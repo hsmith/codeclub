@@ -2,8 +2,9 @@
 //
 //
 
-import RenderManager from './render/RenderManager';
+import InputManager from './input/InputManager';
 import NetworkManager from './network/NetworkManager';
+import RenderManager from './render/RenderManager';
 import Config from './config';
 
 export default class Application
@@ -13,6 +14,7 @@ export default class Application
   //
   
   config = Config;
+  inputManager = null;
   networkManager = null;
   renderManager = null;
   ticker = null;
@@ -23,6 +25,7 @@ export default class Application
 
   constructor() {
     const appElement = document.getElementById('app');
+    this.inputManager = new InputManager(this);
     this.renderManager = new RenderManager(this, appElement);
     this.networkManager = new NetworkManager(this);
   }
@@ -34,6 +37,7 @@ export default class Application
   start() {
     this.networkManager.start();
     this.renderManager.start();
+    this.inputManager.start();
 
     this.ticker = new PIXI.ticker.Ticker();
     this.ticker.add(this._update, this, PIXI.UPDATE_PRIORITY.NORMAL)
@@ -45,6 +49,7 @@ export default class Application
   //
 
   _update(dt) {
+    this.inputManager.update();
     this.networkManager.update();
     this.renderManager.update();
   }

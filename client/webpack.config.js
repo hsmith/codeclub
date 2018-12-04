@@ -59,7 +59,36 @@ const DefaultConfiguration = {
           loader: 'babel-loader',
         },
       },
+
+      //
+      // sass -----------------------------------------------------------------
+      //
+      {
+        test: /\.scss$/,
+        exclude: /node_modules/,
+        use: [
+          {
+            loader: 'style-loader',
+          },
+          {
+            loader: 'css-loader',
+          },
+          {
+            loader: 'sass-loader',
+          },
+        ]
+      },
+
     ],
+  },
+
+  //
+  //
+  //
+  resolve: {
+    alias: {
+      @common: path.resolve(__dirname, '..', 'common')
+    }
   },
 
   //

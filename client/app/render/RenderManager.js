@@ -30,18 +30,16 @@ export default class RenderManager {
 
   start() {
     const bounds = this._getBounds(); 
-    this.pixi = new PIXI.Application({
-      width: bounds.width, 
-      height: bounds.height,
-      backgroundColor: 0x2c2c2c
-    })
+    
+    const config = {...this.app.config.pixi.init, width: bounds.width, height: bounds.height};
+    this.pixi = new PIXI.Application(config);
 
     console.log(bounds);
     
     // build layers
     const self = this;
     let lastContainer = this.pixi.stage;
-    this.app.config.layers.forEach((name,index)=>{
+    this.app.config.pixi.layers.forEach((name,index)=>{
       const newLayer = new PIXI.Container();
       lastContainer.addChild(newLayer)
       lastContainer = newLayer;
@@ -50,6 +48,10 @@ export default class RenderManager {
 
     // add our view into the DOM
     this.root.appendChild(this.pixi.view);
+
+    // get a callback whenever the window resizes
+    window.addEventListener('resize', this._onWindowResize.bind(this));
+    this._onWindowResize();
   }
 
   //
@@ -65,7 +67,16 @@ export default class RenderManager {
 
   _getBounds() {
     const rect = this.root.getBoundingClientRect();
-    return new PIXI.Rectangle(rect.left, rect.top, rect.right - rect.left, rect.bottom - rect.top);
+    return new PIXI.Rectangle(rect.left, rect.top, rect.width, rect.height);
+  }
+
+  //
+  // --------------------------------------------------------------------------
+  //
+
+  _onWindowResize() {
+    const bounds = this._getBounds();
+    this.pixi.renderer.resize(bounds.width, bounds.height);
   }
 
   //
