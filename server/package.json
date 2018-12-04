@@ -1,16 +1,13 @@
 {
   "name": "server",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "main": "index.js",
   "license": "MIT",
-  "_moduleAliases": {
-    "@common": "../common"
-  },
   "scripts": {
     "dev": "nodemon index.js"
   },
   "dependencies": {
-    "module-alias": "^2.1.0",
+    "common": "^0.1.0",
     "websocket": "^1.0.28"
   },
   "devDependencies": {

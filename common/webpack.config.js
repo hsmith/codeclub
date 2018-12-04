@@ -9,8 +9,7 @@ const path = require('path');
 //
 
 const ROOT_DIR = path.resolve(__dirname);
-const DIST_DIR = path.join(ROOT_DIR, 'dist');
-const APP_DIR  = path.join(ROOT_DIR, 'app');
+const SRC_DIR  = path.join(ROOT_DIR, 'src');
 
 //
 // configuration //////////////////////////////////////////////////////////////
@@ -23,7 +22,7 @@ const DefaultConfiguration = {
   //
   
   entry: [
-    './app/index.js'
+    './src/index.js'
   ],
 
   //
@@ -37,8 +36,11 @@ const DefaultConfiguration = {
   //
 
   output: {
-    filename: 'bundle.js',
-    path: DIST_DIR,
+    filename: 'index.js',
+    path: ROOT_DIR,
+    library: 'common',
+    libraryTarget: 'umd',
+    globalObject: "typeof self !== 'undefined' ? self : this",
   },
 
   //
@@ -60,26 +62,6 @@ const DefaultConfiguration = {
           loader: 'babel-loader',
         },
       },
-
-      //
-      // sass -----------------------------------------------------------------
-      //
-      {
-        test: /\.scss$/,
-        exclude: /node_modules/,
-        use: [
-          {
-            loader: 'style-loader',
-          },
-          {
-            loader: 'css-loader',
-          },
-          {
-            loader: 'sass-loader',
-          },
-        ]
-      },
-
     ],
   },
 
@@ -88,23 +70,12 @@ const DefaultConfiguration = {
   //
   resolve: {
     modules: [
-      APP_DIR,
+      SRC_DIR,
       'node_modules'
     ],
     alias: {
     }
   },
-
-  //
-  // dev server ---------------------------------------------------------------
-  //
-  devServer: {
-    contentBase: DIST_DIR,
-    hot: true,
-    open: false,
-    index: 'dist/index.htm',
-    port: 8080,
-  }
 
   //
   // end configuration --------------------------------------------------------
