@@ -2,12 +2,12 @@
 	if(typeof exports === 'object' && typeof module === 'object')
 		module.exports = factory();
 	else if(typeof define === 'function' && define.amd)
-		define([], factory);
+		define("common", [], factory);
 	else if(typeof exports === 'object')
 		exports["common"] = factory();
 	else
 		root["common"] = factory();
-})((typeof self !== 'undefined' ? self : this), function() {
+})(this, function() {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};

@@ -5,8 +5,9 @@
 import InputManager from './input/InputManager';
 import NetworkManager from './network/NetworkManager';
 import RenderManager from './render/RenderManager';
-import Common from 'common';
 import Config from './config';
+import { Point } from 'common';
+
 
 export default class Application
 {
@@ -44,7 +45,7 @@ export default class Application
     this.ticker.add(this._update, this, PIXI.UPDATE_PRIORITY.NORMAL)
     this.ticker.start();
 
-    console.log(Common);
+    console.log(new Point(10, 100));
   }
 
   //

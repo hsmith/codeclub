@@ -39,6 +39,8 @@ const DefaultConfiguration = {
   output: {
     filename: 'bundle.js',
     path: DIST_DIR,
+    library: 'common',
+    libraryTarget: this,
   },
 
   //

@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "dev": "nodemon index.js"
+    "dev": "nodemon index.js -w ./ -w ./node_modules/common"
   },
   "dependencies": {
     "common": "^0.1.0",

@@ -40,7 +40,8 @@ const DefaultConfiguration = {
     path: ROOT_DIR,
     library: 'common',
     libraryTarget: 'umd',
-    globalObject: "(typeof self !== 'undefined' ? self : this)",
+    umdNamedDefine: true,
+    globalObject: 'this'
   },
 
   //
