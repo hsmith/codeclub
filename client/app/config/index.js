@@ -5,7 +5,7 @@
 const Config = {
   pixi: {
     init: {
-      backgroundColor: 0x222222,
+      backgroundColor: 0x00ff22,
       autoResize: true,
       resolution: devicePixelRatio
     },

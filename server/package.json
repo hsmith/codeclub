@@ -4,9 +4,11 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "dev": "nodemon index.js -w ./ -w ./node_modules/common"
+    "dev": "nodemon index.js --watch ./ --watch ./node_modules/common/**/* index.js"
   },
   "dependencies": {
+    "bluebird": "^3.5.3",
+    "bunyan": "^1.8.12",
     "common": "^0.1.0",
     "websocket": "^1.0.28"
   },

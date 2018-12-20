@@ -2,6 +2,6 @@
 //
 //
 
-const common = require('common');
-const WebSocketServer = require('websocket').server;
-
+const Application = require('./application');
+global.App = new Application();
+App.start();

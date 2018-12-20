@@ -2,7 +2,7 @@
 //
 //
 
-import {client as WebSocket} from 'websocket';
+import {w3cwebsocket as WebSocket} from 'websocket';
 
 export default class NetworkManager {
 
@@ -18,6 +18,8 @@ export default class NetworkManager {
 
   constructor(app) {
     this.app = app;
+    this.client = null;
+    this.isConnected = false;
   }
 
   //
@@ -25,6 +27,31 @@ export default class NetworkManager {
   //
 
   start() {
+    this.client = new WebSocket('ws://localhost:8181', 'client');
+    this.client.onerror = this._onError.bind(this);
+    this.client.onopen = this._onConnect.bind(this);
+    this.client.onclose = this._onClose.bind(this);
+    this.client.onmessage = this._onMessage.bind(this);
+  }
+
+  //
+  // --------------------------------------------------------------------------
+  //
+
+  send(msg) {
+    if(this.isConnected) {
+      const str = JSON.stringify(msg);
+      console.log('sending message:',str);
+      this.client.send(str);
+    }
+  }
+
+  //
+  // --------------------------------------------------------------------------
+  //
+
+  ping() {
+    this.send({id: 'ping', time: new Date()});
   }
 
   //
@@ -32,6 +59,50 @@ export default class NetworkManager {
   //
 
   update() {
+  }
+
+  //
+  // private methods ----------------------------------------------------------
+  //
+
+  _route(msg) {
+    console.log(msg);
+  }
+
+  //
+  // --------------------------------------------------------------------------
+  //
+
+  _onError(err) {
+    console.error(err);
+  }
+
+  //
+  // --------------------------------------------------------------------------
+  //
+
+  _onConnect() {
+    console.log('Connection Established');
+    this.isConnected = true;
+    this.ping();
+  } 
+
+  //
+  // --------------------------------------------------------------------------
+  //
+
+  _onMessage(msg) {
+    msg = JSON.parse(msg.data);
+    this._route(msg);
+  }
+
+  //
+  // --------------------------------------------------------------------------
+  //
+
+  _onClose() {
+    console.log('Connection closed');
+    this.isConnected = false;
   }
 
   //

@@ -4,6 +4,7 @@
   "license": "MIT",
   "scripts": {
     "bootstrap": "lerna bootstrap",
+    "tim": "echo 'Tim is the best'",
     "common_build": "yarn --cwd ./common build",
     "common_dev": "yarn --cwd ./common dev",
     "client_dev": "yarn --cwd ./client dev",
