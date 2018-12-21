@@ -230,10 +230,6 @@ color-name@1.1.3:
   version "1.1.3"
   resolved "https://registry.yarnpkg.com/color-name/-/color-name-1.1.3.tgz#a7d0558bd89c42f795dd42328f740831ca53bc25"
 
-common@^0.1.0:
-  version "0.1.4"
-  resolved "https://registry.yarnpkg.com/common/-/common-0.1.4.tgz#b8f2411cc0224a64032bcc7b778814d76e10bece"
-
 component-emitter@^1.2.1:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/component-emitter/-/component-emitter-1.2.1.tgz#137918d6d78283f7df7a6b7c5a63e140e69425e6"

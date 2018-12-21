@@ -1249,10 +1249,6 @@ commander@~2.17.1:
   version "2.17.1"
   resolved "https://registry.yarnpkg.com/commander/-/commander-2.17.1.tgz#bd77ab7de6de94205ceacc72f1716d29f20a77bf"
 
-common@^0.1.0:
-  version "0.1.4"
-  resolved "https://registry.yarnpkg.com/common/-/common-0.1.4.tgz#b8f2411cc0224a64032bcc7b778814d76e10bece"
-
 commondir@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/commondir/-/commondir-1.0.1.tgz#ddd800da0c66127393cca5950ea968a3aaf1253b"
